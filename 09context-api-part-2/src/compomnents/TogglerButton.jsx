@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
+import { useContext } from "react";
 import ToggleContext from "../context/ToggleContext";
 
 const TogglerButton = () => {
-  // const [check, setCheck] = useState(true);
-
   const { check, setCheck } = useContext(ToggleContext);
 
   return (

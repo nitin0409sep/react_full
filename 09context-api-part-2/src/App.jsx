@@ -2,12 +2,9 @@ import TogglerButton from "./compomnents/TogglerButton";
 import Card from "./compomnents/Card";
 import ToggleContextProvider from "./context/ToggleContextProvider";
 import Contact from "./compomnents/Contact";
-import Home from "./compomnents/Home";
-import {
-  UserContactContextProvider,
-  userContact,
-} from "./context/UserContactContext";
+import { UserContactContextProvider } from "./context/UserContactContext";
 import { useEffect, useState } from "react";
+import User from "./compomnents/User";
 
 function App() {
   const [firstname, setFirstname] = useState("");
@@ -32,7 +29,7 @@ function App() {
 
           <UserContactContextProvider value={{ firstname, lastname, mob }}>
             <Contact />
-            <Home />
+            <User />
           </UserContactContextProvider>
         </div>
       </ToggleContextProvider>

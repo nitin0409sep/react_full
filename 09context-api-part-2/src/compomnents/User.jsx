@@ -1,7 +1,13 @@
 import React from "react";
+import { userContact } from "../context/UserContactContext";
 
 const User = () => {
-  return <div>User</div>;
+  let { firstname, lastname } = userContact();
+  return (
+    <div className="text-2xl">
+      User Name - {firstname} {lastname}
+    </div>
+  );
 };
 
 export default User;

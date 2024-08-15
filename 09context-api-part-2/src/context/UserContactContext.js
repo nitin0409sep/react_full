@@ -4,7 +4,7 @@ import { createContext, useContext } from "react";
 export const UserContactContext = createContext({
   firstname: "nitin",
   lastname: "verma",
-  mob: () => {},
+  mob: (val1, val2) => { },
 });
 
 // SET Provider -> Step 2
