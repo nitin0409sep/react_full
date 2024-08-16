@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTodoContext } from "../context";
 
 const ListTodo = () => {
@@ -8,6 +8,8 @@ const ListTodo = () => {
   const [edittable, setEditable] = useState(false);
   const [updatedValue, setUpdatedValue] = useState("");
   const [editTodoIdx, setEditTodoIdx] = useState(-1);
+
+  const inputFocusRef = useRef();
 
   //? Make Editable & Update Value
   const editTodoItem = (todo) => {
@@ -35,6 +37,12 @@ const ListTodo = () => {
     setTodos(todos.map((todo) => todo));
   }, [todos]);
 
+  useEffect(() => {
+    if (edittable) {
+      inputFocusRef.current?.focus();
+    }
+  }, [edittable]);
+
   return (
     <>
       <div className="h-full overflow-auto">
@@ -47,14 +55,14 @@ const ListTodo = () => {
               <input
                 type="text"
                 className="flex-1 outline-none px-3 py-2 rounded-md"
-                autoFocus={true}
+                ref={inputFocusRef}
                 value={updatedValue}
                 onChange={(e) => setUpdatedValue(e.target.value)}
               />
             ) : (
               <input
                 type="text"
-                className="flex-1 outline-none px-3 py-2 rounded-md"
+                className="flex-1 outline-none px-3 py-2 rounded-md pointer-events-none"
                 value={val.todo}
                 readOnly={editTodoIdx !== val.id}
               />
