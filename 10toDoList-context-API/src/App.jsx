@@ -51,7 +51,7 @@ function App() {
       value={{ todos, addTodo, editTodo, deleteTodo, toggeleComplete }}
     >
       <div className="h-screen w-full flex flex-col gap-5 px-20 py-10 text-center">
-        <span className="text-2xl font-serif">Todo Using Context API</span>
+        <span className="text-2xl font-serif">Todo</span>
         <TodoForm />
         <ListTodo />
       </div>
