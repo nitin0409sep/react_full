@@ -1,14 +1,26 @@
-import React from "react";
 import { userContact } from "../context/UserContactContext";
+import { useContext } from "react";
+import ToggleContext from "../context/ToggleContext";
 
 const Contact = () => {
-  const { firstname, lastname, mob } = userContact();
+  const { mob } = userContact();
+  const { check } = useContext(ToggleContext);
 
-  mob("Nitin", "Verma");
+  const theme = check
+    ? "bg-black text-white border-2 border-white"
+    : "bg-white text-black border-2 border-black";
+
+  function updateName() {
+    mob("Nitin", "Verma");
+  }
 
   return (
     <div>
-      Contact {firstname} {lastname}
+      <button className={`${theme} p-5 rounded-3xl`} onClick={updateName}>
+        <span className="text-2xl">Update Name</span>
+      </button>
+      <br />
+      <br />
     </div>
   );
 };
