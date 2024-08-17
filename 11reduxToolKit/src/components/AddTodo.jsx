@@ -33,7 +33,9 @@ const AddTodo = () => {
 
         <button
           type="submit"
-          className="p-3 bg-green-500 text-white w-24 rounded-lg text-xl font-semibold"
+          className={`${
+            input.length === 0 ? "bg-gray-300" : "bg-blue-400"
+          } p-3 text-white w-24 rounded-lg text-xl font-semibold`}
           disabled={input.length === 0}
         >
           Add

@@ -61,9 +61,13 @@ const Todos = () => {
               />
             )}
 
-            <div className="flex h-fit bg-red-400 rounded-e-md">
+            <div className="flex h-fit rounded-e-md">
               <button
-                className="bg-green-400 w-24 p-3 text-white text-xl"
+                className={`${
+                  editable & (editTodoIdx === todo.id)
+                    ? "bg-blue-400"
+                    : "bg-green-500"
+                } w-24 p-3 text-white text-xl`}
                 onClick={() => updateTodoItem(todo)}
               >
                 {editable & (editTodoIdx === todo.id) ? "Save" : "Edit"}
