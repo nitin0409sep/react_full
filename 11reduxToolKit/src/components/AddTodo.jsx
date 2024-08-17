@@ -19,7 +19,7 @@ const AddTodo = () => {
     <>
       <form
         onSubmit={addTodoHandeler}
-        className="mt-12 w-full flex justify-center flex-col items-center gap-4 px-2"
+        className="w-full flex justify-center flex-col items-center gap-4 px-2"
       >
         <input
           type="text"
