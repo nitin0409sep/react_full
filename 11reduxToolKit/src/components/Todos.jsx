@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTodoList, removeTodo } from "../features/todo/todoSlice";
 
@@ -8,6 +8,7 @@ const Todos = () => {
 
   const [editable, setEditable] = useState(false);
   const [updateTodo, setUpdateTodo] = useState("");
+  const [editTodoIdx, setEditTodoIdx] = useState(-1);
 
   const editInput = useRef();
 
@@ -17,10 +18,11 @@ const Todos = () => {
 
     if (!editable) {
       setUpdateTodo(todo.text);
-      editInput.current?.focus();
+      setEditTodoIdx(todo?.id);
     } else {
       if (updateTodo.length)
         dispatch(updateTodoList({ id: todo.id, text: updateTodo }));
+      setEditTodoIdx(-1);
     }
   };
 
@@ -30,6 +32,12 @@ const Todos = () => {
     dispatch(removeTodo(id));
   };
 
+  useEffect(() => {
+    if (editable) {
+      editInput.current?.focus();
+    }
+  }, [editable]);
+
   return (
     <>
       {todos.map((todo) => (
@@ -37,18 +45,18 @@ const Todos = () => {
           key={todo.id}
           className="w-full bg-white rounded-md flex justify-between gap-4"
         >
-          {!editable ? (
-            <input
-              className="flex-1 p-3 text-xl pr-1 outline-none rounded-s-md"
-              value={todo.text}
-              readOnly
-            />
-          ) : (
+          {editable && editTodoIdx === todo.id ? (
             <input
               className="flex-1 p-3 text-xl pr-1 outline-none rounded-s-md"
               value={updateTodo}
               ref={editInput}
               onChange={(e) => setUpdateTodo(e.target.value)}
+            />
+          ) : (
+            <input
+              className="flex-1 p-3 text-xl pr-1 outline-none rounded-s-md"
+              value={todo.text}
+              readOnly
             />
           )}
 
@@ -57,7 +65,7 @@ const Todos = () => {
               className="bg-green-400 w-24 p-3 text-white text-xl"
               onClick={() => updateTodoItem(todo)}
             >
-              {editable ? "Save" : "Edit"}
+              {editable & (editTodoIdx === todo.id) ? "Save" : "Edit"}
             </button>
             <button
               className="bg-red-400 w-24 p-3 text-white text-xl rounded-e-md"
