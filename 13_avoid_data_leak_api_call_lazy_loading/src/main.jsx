@@ -10,7 +10,7 @@ import App from "./App.jsx";
 import "./index.css";
 
 import { lazy, Suspense } from "react";
-const About = lazy(() => import("./components/About.jsx"));
+const About = lazy(() => delayLoading(import("./components/About.jsx")));
 const Contact = lazy(() => import("./components/Contact.jsx"));
 
 //! Route based lazy loading
@@ -44,3 +44,10 @@ createRoot(document.getElementById("root")).render(
     </RouterProvider>
   </StrictMode>
 );
+
+//? Add a fixed delay so we can see the loading state
+function delayLoading(promise) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 2000);
+  }).then(() => promise);
+}

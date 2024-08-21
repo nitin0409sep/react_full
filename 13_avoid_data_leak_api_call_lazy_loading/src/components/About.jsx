@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { useId } from "react";
 
 const About = () => {
   const [users, setUsers] = useState([]);
@@ -45,7 +44,7 @@ const About = () => {
       {loader ? (
         <div>
           <img
-            src="../../public/loader.svg"
+            src="./loader.svg"
             alt="loader"
             height={"100px"}
             width={"100px"}
