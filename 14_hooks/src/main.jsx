@@ -13,6 +13,10 @@ import "./index.css";
 import { lazy, Suspense } from "react";
 const About = lazy(() => delayLoading(import("./components/About.jsx")));
 const Contact = lazy(() => import("./components/Contact.jsx"));
+import ForwardRefParent from "./forwaredRef/ForwardRefParent.jsx";
+import LayoutEffect from "./layoutEffect/LayoutEffect.jsx";
+import Memo from "./memo/Memo.jsx";
+import Reducer from "./reducer/Reducer.jsx";
 
 //! Route based lazy loading
 const router = createBrowserRouter(
@@ -34,6 +38,11 @@ const router = createBrowserRouter(
           </Suspense>
         }
       />
+
+      <Route path="forwardRef" element={<ForwardRefParent />} />
+      <Route path="layoutEffect" element={<LayoutEffect />} />
+      <Route path="memo" element={<Memo />} />
+      <Route path="reducer" element={<Reducer />} />
     </Route>
   )
 );
