@@ -7,7 +7,7 @@ const About = () => {
   const [showUser, setShowUser] = useState(false);
 
   // const [isMounted, setIsMounted] = useState(true);
-  const isMounted = useRef();
+  const isMounted = useRef(); // iseRef - returns an object with a single property current {current: inititalValue}
 
   const fetchUsers = async () => {
     setLoader(true);
