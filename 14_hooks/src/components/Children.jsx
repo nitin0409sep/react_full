@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Children = React.memo(({ fetchUsers }) => {
-  console.log("Children");
-  return <div>Children</div>;
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
+  return (
+    <div>
+      Children <br />
+    </div>
+  );
 });
 
 export default Children;
