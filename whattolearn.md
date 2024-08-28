@@ -1,6 +1,6 @@
 # Topics
 
-### 1. Higher Order Components - What why, when , how do u it
+### 1. Higher Order Components - What why, when , how do u it - Done
 
 ### 2. How to sned props in siblings - Done
 
@@ -20,7 +20,7 @@
 
 ### 10. Testing -> React Testing (Unit Testing)
 
-### 11. ASYNC Tasks -> API Call, Events
+### 11. ASYNC Tasks -> API Call, Events - Done
 
 ### 12. UseEffect - In Depth - Done
 
